@@ -1,0 +1,51 @@
+{% load static%}
+{% block content %}
+{% include  'header.html'  %}
+
+<div class="container-fluid contact position-relative px-5" style="margin-top: 90px;">
+    <div class="container">
+        <div class="row g-5 mb-5">
+            <div class="col-lg-4 col-md-6">
+            </div>
+            <div class="col-lg-4 col-md-6">
+            </div>
+            <div class="col-lg-6 col-md-6">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form method="POST" action="facacknowledgement" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row g-3">
+
+                        <div class="col-sm-12">
+                            <input type="date" class="form-control bg-light border-0 px-4" id="date" placeholder="Your Date" style="height: 55px;" name="date">
+                        </div>
+                        <div class="col-sm-12">
+                            <select class="form-control bg-light border-0 px-4" id="designation" placeholder="Designation" style="height: 55px;" name="designation">
+                                <option>  Designation </option>
+                                <option> Trainer</option>
+                                <option> HR </option>
+                                <option> Operations Head </option>
+                                </select>
+                        </div>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control bg-light border-0 px-4" id="name" placeholder="Faculty Name" style="height: 55px;" name="name">
+                        </div>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control bg-light border-0 px-4" id="email" placeholder="Faculty Email" style="height: 55px;" name="email">
+                        </div>
+                        <div class="col-sm-12">
+                            <textarea  class="form-control bg-light border-0 px-4" id="ackmsg" placeholder="Your Message " style="height: 55px;" name="ackmsg"></textarea>
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary border-inner w-100 py-3" type="submit">Sent</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}

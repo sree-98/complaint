@@ -1,0 +1,5 @@
+{% if object.viewed %}
+  <a href="{% url 'toggle_viewed' pk=object.pk %}" class="btn btn-secondary">Mark as not viewed</a>
+{% else %}
+  <a href="{% url 'toggle_viewed' pk=object.pk %}" class="btn btn-primary">Mark as viewed</a>
+{% endif %}

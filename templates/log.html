@@ -1,0 +1,19 @@
+{% load static%}
+{% block content %}
+{% include  'header.html'  %}
+<br><br><br><br>
+<center><h3><u>Please select your login below</u></h3></center>
+<center><div class="col-sm-12">
+    <a href="adminlogin" style="background-color:orange; color:black; font-size:25px;">Admin Login </a>
+</div>
+                             
+<div class="col-sm-12">
+    <a href="studentlogin" style="background-color:orange; color:black; font-size:25px;">Student Login</a>
+</div>
+            
+<div class="col-sm-12">
+   <a href="facultylogin" style="background-color:orange; color:black; font-size:25px;">Faculty Login</a>
+</div></center>
+
+{% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,148 @@
+{% load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Complaintbox - Students complaintbox Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid px-0 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-lg-4 text-center bg-secondary py-3">
+                <div class="d-inline-flex align-items-center justify-content-center">
+                    <i class="bi bi-envelope fs-1 text-primary me-3"></i>
+                    <div class="text-start">
+                        <h6 class="text-uppercase mb-1">Email Us</h6>
+                        <span>info@example.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center bg-primary border-inner py-3">
+                <div class="d-inline-flex align-items-center justify-content-center">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="m-0 text-uppercase text-white"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                          </svg>Students Complaint box</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center bg-secondary py-3">
+                <div class="d-inline-flex align-items-center justify-content-center">
+                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+                    <div class="text-start">
+                        <h6 class="text-uppercase mb-1">Call Us</h6>
+                        <span>+012 345 6789</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-primary me-3"></i>CakeZone</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto mx-lg-auto py-0">
+                {% if request.session.admin %}
+                    <a href="index" class="nav-item nav-link active">Home</a>
+                    <a href="adminprofile" class="nav-item nav-link active">View profile</a>
+                    <a href="viewuserregister" class="nav-item nav-link active">View Student</a>
+                    <a href="viewcomplaintadmin" class="nav-item nav-link active">View Complaints</a>
+                    <a href="facregister" class="nav-item nav-link active">Add Faculty</a>
+                    <a href="viewfacregister" class="nav-item nav-link active">View Faculty</a>
+                    <a href="facacknowledgement" class="nav-item nav-link active">Fac Acknowledgement</a>
+                    <a href="logout" class="nav-item nav-link active">Logout</a>
+
+                {% elif request.session.uid %}
+                    <a href="index" class="nav-item nav-link active">Home</a>
+                    <a href="studentprofile" class="nav-item nav-link active">View profile</a>
+                    <a href="complaint" class="nav-item nav-link active">Complaint Register</a>
+                    <a href="viewacknowledgement" class="nav-item nav-link active">View Acknowledgement</a>
+                    <a href="logout" class="nav-item nav-link active">Logout</a>
+
+                {% elif request.session.fid %}
+                    <a href="index" class="nav-item nav-link active">Home</a>
+                    <a href="facultyprofile" class="nav-item nav-link active">View profile</a>
+                    
+                    {% if request.session.designation == "Trainer" %}
+                    <a href="viewcomplaintTrainer" class="nav-item nav-link active">View Complaints</a>
+
+                    {% elif request.session.designation == "HR" %}
+                    <a href="viewcomplaintHr" class="nav-item nav-link active">View Complaints</a>
+
+                    {% elif request.session.designation == "Operations Head" %}
+                    <a href="viewcomplaintOperationshead" class="nav-item nav-link active">View Complaints</a>
+
+                    {% endif %}
+                    <a href="acknowledgement" class="nav-item nav-link active">Acknowledgement</a>
+
+                    {% if request.session.designation == "Trainer" %}
+                    <a href="viewfacacknowledgementTrainer" class="nav-item nav-link active">Fac Acknowledgement</a>
+
+                    {% elif request.session.designation == "HR" %}
+                    <a href="viewfacacknowledgementHr" class="nav-item nav-link active">Fac Acknowledgement</a>
+
+                    {% elif request.session.designation == "Operations Head" %}
+                    <a href="viewfacacknowledgementOperationshead" class="nav-item nav-link active">Fac Acknowledgement</a>
+
+                    {% endif %}
+                    <a href="logout" class="nav-item nav-link active">Logout</a>
+
+                {% else %}
+                    <a href="index" class="nav-item nav-link active">Home</a>
+                    <a href="complaint" class="nav-item nav-link active">Complaint Register</a>
+                    <a href="userregister" class="nav-item nav-link active">Student Register</a>
+                    <a href="log" class="nav-item nav-link active">Login</a>
+
+                {% endif %}
+                    {% comment %} <a href="about.html" class="nav-item nav-link">About Us</a>
+                    <a href="menu.html" class="nav-item nav-link">Menu & Pricing</a>
+                    <a href="team.html" class="nav-item nav-link">Master Chefs</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="service.html" class="dropdown-item">Our Service</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                </div> {% endcomment %}
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    {% endblock %}
